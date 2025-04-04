@@ -1,0 +1,45 @@
+on: [push, pull_request]
+name: CI
+
+permissions:
+    contents: read
+
+jobs:
+    build:
+        name: Build
+        runs-on: windows-latest
+        env:
+            BUILD_TIME:
+        defaults:
+            run:
+                shell: msys2 {0}
+
+        steps:
+            - name: Install dependencies
+              uses: msys2/setup-msys2@v2
+              with:
+                  install: >-
+                      git
+                      base-devel
+                      mingw-w64-x86_64-gcc
+                      mingw-w64-x86_64-cmake
+                      mingw-w64-x86_64-curl
+                  update: true
+
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Configure CMake
+              run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
+
+            - name: Build
+              run: ninja -C build
+
+            - name: Prepare artifact
+              run: echo "BUILD_TIME=$(date '+%Y-%m-%d_%H-%M-%S')" >> $GITHUB_ENV
+
+            - name: Upload artifact
+              uses: actions/upload-artifact@v4
+              with:
+                  name: setup_desktop_env_${{env.BUILD_TIME}}
+                  path: ./

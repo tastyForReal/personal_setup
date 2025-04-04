@@ -1,0 +1,70 @@
+{
+    "configurations": [
+        {
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "name": "(gdb) Launch from CMake build directory",
+            "program": "${command:cmake.launchTargetPath}",
+            "request": "launch",
+            "setupCommands": [
+                {
+                    "description": "Change gdb's working directory to the root workspace folder",
+                    "text": "-environment-cd ${workspaceFolder}"
+                },
+                {
+                    "description": "Enable custom pretty printers to work on the variables view",
+                    "text": "-enable-pretty-printing"
+                },
+                {
+                    "description": "Enable standard pretty-printing in the gdb console",
+                    "text": "-gdb-set print pretty on"
+                },
+                {
+                    "description": "GDB: no limit on print output for arrays",
+                    "text": "-gdb-set print elements unlimited"
+                },
+                {
+                    "description": "GDB: pretty print arrays",
+                    "text": "-gdb-set print array on"
+                },
+                {
+                    "description": "GDB: show array indexes",
+                    "text": "-gdb-set print array-indexes on"
+                }
+            ],
+            "stopAtEntry": false,
+            "type": "cppdbg"
+        },
+        {
+            "MIMode": "gdb",
+            "name": "(gdb) Attach from CMake build directory",
+            "processId": "${command:pickProcess}",
+            "program": "${command:cmake.launchTargetPath}",
+            "request": "attach",
+            "setupCommands": [
+                {
+                    "text": "-environment-cd ${workspaceFolder}"
+                },
+                {
+                    "text": "-enable-pretty-printing"
+                },
+                {
+                    "text": "-gdb-set print pretty on"
+                },
+                {
+                    "text": "-gdb-set print elements unlimited"
+                },
+                {
+                    "text": "-gdb-set print array on"
+                },
+                {
+                    "text": "-gdb-set print array-indexes on"
+                }
+            ],
+            "type": "cppdbg"
+        }
+    ],
+    "version": "0.2.0"
+}

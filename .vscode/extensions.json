@@ -1,0 +1,13 @@
+{
+	"recommendations": [
+		"codezombiech.gitignore",
+		"cschlosser.doxdocgen",
+		"eamodio.gitlens",
+		"llvm-vs-code-extensions.vscode-clangd",
+		"ms-vscode.cmake-tools",
+		"ms-vscode.cpptools",
+		"ms-vscode.cpptools-themes",
+		"mutantdino.resourcemonitor",
+		"twxs.cmake"
+	]
+}

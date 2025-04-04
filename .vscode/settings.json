@@ -1,0 +1,34 @@
+{
+	"C_Cpp.autocomplete": "disabled",
+	"C_Cpp.errorSquiggles": "disabled",
+	"C_Cpp.experimentalFeatures": "disabled",
+	"C_Cpp.formatting": "disabled",
+	"C_Cpp.intelliSenseEngine": "disabled",
+	"clangd.arguments": [
+		"-j=12",
+		"--log=verbose",
+		"--all-scopes-completion",
+		"--background-index",
+		"--completion-style=detailed",
+		"--header-insertion=iwyu",
+		"--suggest-missing-includes",
+		"--clang-tidy",
+		"--clang-tidy-checks=*,-abseil-*,-altera-*,-android-*,-fuchsia-*,-google-*,-llvm*,-modernize-use-trailing-return-type,-zircon-*,-readability-else-after-return,-readability-static-accessed-through-instance,-readability-avoid-const-params-in-decls,-cppcoreguidelines-non-private-member-variables-in-classes,-misc-non-private-member-variables-in-classes",
+		"--compile-commands-dir=${workspaceFolder}\\build\\Debug"
+	],
+	"clangd.path": "E:\\Stuff\\Programs\\msys64\\mingw64\\bin\\clangd.exe",
+	"cmake.automaticReconfigure": true,
+	"cmake.buildDirectory": "${workspaceFolder}/build/${buildType}",
+	"cmake.cmakePath": "E:\\Stuff\\Programs\\msys64\\mingw64\\bin\\cmake.exe",
+	"cmake.configureOnOpen": false,
+	"cmake.configureSettings": {
+		"CMAKE_EXPORT_COMPILE_COMMANDS": true,
+		"CURL_STATICLIB": true
+	},
+	"cmake.preferredGenerators": ["Ninja", "Unix Makefiles"],
+	"debug.allowBreakpointsEverywhere": true,
+	"debug.inlineValues": "on",
+	"debug.showBreakpointsInOverviewRuler": true,
+	"editor.semanticHighlighting.enabled": false,
+	"editor.trimAutoWhitespace": false
+}
