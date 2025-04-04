@@ -8,14 +8,12 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 find_package(CURL REQUIRED)
 
-add_executable(command_runner
+add_executable(setup_desktop_env
     main.cpp
     command_executor.cpp
     downloader.cpp
 )
 
-add_definitions("-DCURL_STATICLIB")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic -Werror")
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic -Werror -static")
-
-target_link_libraries(command_runner PRIVATE ${CURL_STATIC_LIBRARIES})
+target_link_libraries(setup_desktop_env PRIVATE ${CURL_LIBRARIES})
